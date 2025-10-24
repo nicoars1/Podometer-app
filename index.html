@@ -10,6 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="style.css">
     <title>Podometer</title>
 </head>
 <body>
@@ -27,12 +28,10 @@
     <main>
         <section class="appSection">
             <h1>Podometer App</h1>
-            <div>
-                <h2>Steps
-                    <span>0</span>
-                </h2>
-
-                <button class="btn">
+            <div class="appContainer">
+                <h2>Steps</h2>
+                <span id="stepsCount">0</span>
+                <button id="stepsBtn">
                     +1
                 </button>
 
@@ -40,5 +39,6 @@
         </section>
 
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
