@@ -1,0 +1,64 @@
+:root {
+    --background-color: #FDF8E1;  /* Un crema/vainilla muy suave */
+    --text-color: #4B4335;      /* Marrón oscuro (más suave que el negro) */
+    --nav-color: #76997c;      /* Tu verde oscuro (ancla) */
+    --background-color-app: #A3B18A; /* Tu verde oliva (color principal) */
+    --accent-color: #BC6C25;    /* Un ocre/naranja quemado para acentos */
+    --link-color: #cccc;
+    --shadow: 0 0 10px rgba(0, 0, 0, 02);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    height: 100dvh;
+}
+
+nav {
+    background-color: var(--nav-color);
+    
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 30px;
+    padding: 8px;
+
+    a{
+        text-decoration: none;
+        color: var(--link-color);
+    }
+}
+
+.appSection {
+    font-size: 30px;
+    
+    h1 {
+        text-align: center;
+    }
+}
+
+.appContainer {
+    background-color: var(--background-color-app);
+    padding: 30px;
+    margin: 30px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+
+
+    button {
+        margin: 10px;
+        padding: 15px 15px;
+        border: 2px solid var(--accent-color);
+        border-radius: 5px;
+        font-size: 20px;
+        background-color: #f3780c9d;
+    }
+}
