@@ -251,3 +251,81 @@ h1 {
 .optionsMenu button:hover {
     background-color: #eee;
 }
+
+@media (max-width: 480px) {
+
+    nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .appContainer {
+        width: 100%;
+        margin: 20px 0;
+        padding: 20px;
+    }
+
+    .addObjetive {
+        width: 100%;
+        height: 55px;
+        font-size: 16px;
+    }
+
+    .objetiveCard {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .objetiveHeader {
+        gap: 20px;
+        font-size: 24px;
+    }
+
+    .goalWindow {
+        width: 100%;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    #cardsContainer {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .appContainer {
+        width: 100dvh;
+        padding: 25px;
+    }
+
+    .addObjetive {
+        width: 100%;
+        height: 60px;
+    }
+
+    .objetiveCard {
+        width: 100%;
+    }
+
+    .objetiveHeader {
+        gap: 80px;
+    }
+
+    .goalWindow {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .appContainer {
+        width: 100dvh;
+    }
+
+    .objetiveCard {
+        width: 100%;
+    }
+}
