@@ -6,14 +6,13 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css">
     <title>Podometer</title>
 </head>
-<body>
+<body id="body">
     <nav>
         <div class="left">
             Nico's podometer app
@@ -22,23 +21,55 @@
         <div class="right">
             <a href="#"><i class="fa-solid fa-circle-user"></i></a>
         </div>
-
     </nav>
 
     <main>
+
+        <h1>Podometer App</h1>
+
         <section class="appSection">
-            <h1>Podometer App</h1>
             <div class="appContainer">
                 <h2>Steps</h2>
                 <span id="stepsCount">0</span>
-                <button id="stepsBtn">
-                    +1
-                </button>
-
             </div>
         </section>
 
+        <div class="objetiveContainer">
+
+            <div class="objetiveHeader">
+                <h2>Objetives</h2>
+                <div class="optionsWrapper">
+                    <button class="moreOptions" id="moreOptions">:</button>
+
+                    <div class="optionsMenu windowHidden" id="optionsMenu">
+                        <button id="clearObjectives">Eliminar todos los objetivos</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cardsContainer" class="windowHidden"></div>
+
+            <div>
+                <button class="addObjetive" id="addObjetive">Add Objetives</button>
+            </div>
+
+            <div class="goalWindow windowHidden" id="goalWindow">
+                <input type="text" placeholder="What are you working on?" class="inputTitle" id="inputTitle">
+                <div class="goalInfo">
+                    <h3>Steps Goal</h3>
+                    <input type="number" class="no-arrows" min="0" id="inputSteps">
+                </div>
+                <div class="btnContainer">
+                    <button id="cancelBtn">Cancel</button>
+                    <button id="saveBtn">Save</button>
+                </div>
+            </div>
+
+        </div>
+
     </main>
+    
     <script src="script.js" type="module"></script>
+    <script src="objetives.js"></script>
 </body>
 </html>

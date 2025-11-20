@@ -1,36 +1,87 @@
-let stepsBtn = document.getElementById("stepsBtn")
-let stepsCount = document.getElementById("stepsCount")
+const stepCountElement = document.getElementById('stepsCount');
+const sensorStatusElement = document.getElementById('sensorStatus');
 
-stepsBtn.addEventListener("click", () => {
-let actualText = stepsCount.textContent;
-let actualSteps = parseInt(actualText, 10)
-stepsCount.textContent = actualSteps +1;
-})
+// CONFIG
+const SENSOR_FREQUENCY = 30; 
+const WINDOW_SIZE = SENSOR_FREQUENCY * 3; // 3 seconds 
+const MIN_ACTIVE_MAGNITUDE = 5;
+let STEP_THRESHOLD = 0;
+let STEP_RESET_THRESHOLD = 0;
 
-if ('Accelerometer' in window) {
-  console.log("Este dispositivo es compatible con la API Accelerometer.");
+let magnitudes = [];
+let stepCount = 0;
+let isStepInProgress = false; 
+let isActive = false 
+
+if ('LinearAccelerationSensor' in window) {
+  sensorStatusElement.innerText = "Sensor activated successfully";
 
   try {
-    const accelerometer = new Accelerometer({ frequency: 10 });
+    const sensor = new LinearAccelerationSensor({ frequency: SENSOR_FREQUENCY });
 
-    accelerometer.addEventListener("reading", () => {
-      console.log(`x: ${accelerometer.x.toFixed(2)}, y: ${accelerometer.y.toFixed(2)}, z: ${accelerometer.z.toFixed(2)}`);
-    });
+    sensor.addEventListener("reading", () => {
+      const magnitude = Math.sqrt(
+        sensor.x**2 + 
+        sensor.y**2 + 
+        sensor.z**2
+      );
+      console.log(`Magnitude: ${magnitude}`)
+      magnitudes.push(magnitude);
+      if (magnitudes.length > WINDOW_SIZE) magnitudes.shift();
 
-    accelerometer.addEventListener("error", (event) => {
-      if (event.error.name === 'NotAllowedError') {
-        console.error("Permiso para el acelerómetro denegado.");
+      const avg = magnitudes.reduce((a,b)=>a+b,0) / magnitudes.length;
+      const variance = magnitudes.reduce((a,b)=>a+(b-avg)**2,0) / magnitudes.length;
+      const stdDev = Math.sqrt(variance);
+
+      if (avg > MIN_ACTIVE_MAGNITUDE) {
+        if (!isActive) {
+          console.log("Activity detected: start of walk.");
+          isActive = true;
+        }
       } else {
-        console.error("Error del acelerómetro:", event.error.name, event.error.message);
+        if (isActive) console.log("Inactive: the walk has stopped.");
+        isActive = false;
+      }
+
+      if (isActive) {
+      STEP_THRESHOLD = avg + stdDev * 1.5; 
+      STEP_RESET_THRESHOLD = avg + stdDev * 0.5;
+
+      
+      if (magnitude > STEP_THRESHOLD && !isStepInProgress) {
+        stepCount++;
+        isStepInProgress = true; 
+        
+     
+        stepCountElement.innerText = stepCount;
+        console.log(`Step detected (${magnitude.toFixed(2)} > ${STEP_THRESHOLD.toFixed(2)})`);
+        // event to get the number of steps in objectives.js
+        document.dispatchEvent(new CustomEvent("stepUpdated", {
+          detail: { stepCount }
+        }));
+      }}
+
+      
+      if (magnitude < STEP_RESET_THRESHOLD && isStepInProgress) {
+        isStepInProgress = false; 
+        console.log("...ready for next step");
       }
     });
 
-    accelerometer.start();
+    sensor.addEventListener("error", (event) => {
+      if (event.error.name === 'NotAllowedError') {
+        sensorStatusElement.innerText = "Sensor permission denied.";
+      } else {
+        sensorStatusElement.innerText = `Sensor error: ${event.error.name}`;
+      }
+    });
+
+    sensor.start();
 
   } catch (error) {
-    console.error("No se pudo iniciar el acelerómetro:", error);
+    sensorStatusElement.innerText = `The sensor could not be started: ${error}`;
   }
 
 } else {
-  console.log("Este dispositivo NO tiene un acelerómetro o el navegador no lo soporta.");
+  sensorStatusElement.innerText = "This device does NOT support LinearAccelerationSensor.";
 }

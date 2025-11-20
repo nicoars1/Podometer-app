@@ -1,11 +1,11 @@
 :root {
-    --background-color: #FDF8E1;  /* Un crema/vainilla muy suave */
-    --text-color: #4B4335;      /* Marrón oscuro (más suave que el negro) */
-    --nav-color: #76997c;      /* Tu verde oscuro (ancla) */
-    --background-color-app: #A3B18A; /* Tu verde oliva (color principal) */
-    --accent-color: #BC6C25;    /* Un ocre/naranja quemado para acentos */
+    --background-color: #FDF8E1;
+    --text-color: #4B4335;
+    --nav-color: #76997c;
+    --background-color-app: #A3B18A;
+    --accent-color: #BC6C25;
     --link-color: #cccc;
-    --shadow: 0 0 10px rgba(0, 0, 0, 02);
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -22,26 +22,26 @@ body {
 
 nav {
     background-color: var(--nav-color);
-    
-
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
-    height: 30px;
-    padding: 8px;
+    padding: 10px 20px;
+}
 
-    a{
-        text-decoration: none;
-        color: var(--link-color);
-    }
+nav a {
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+h1 {
+    padding-top: 20px;
+    text-align: center;
 }
 
 .appSection {
     font-size: 30px;
-    
-    h1 {
-        text-align: center;
-    }
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
 .appContainer {
@@ -51,14 +51,203 @@ nav {
     text-align: center;
     border-radius: 5px;
     box-shadow: var(--shadow);
+    width: 50vh;
+}
+
+.objetiveContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.objetiveHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 180px;
+    padding-bottom: 10px;
+    border-bottom: #4B4335 solid 2px;
+    font-size: 30px;
+}
+
+.moreOptions {
+    margin: 0;
+    padding: 2px 8px;
+    border: 1px solid #f3780c9d;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #f3780c9d;
+    cursor: pointer;
+}
+
+.moreOptions:hover {
+    background-color: #e68632;
+}
+
+.addObjetive {
+    width: 370px;
+    height: 60px;
+    background-color: #f3780c9d;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: .2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addObjetive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.goalWindow {
+    background-color: var(--background-color-app);
+    width: 400px;
+    height: 220px;
+    border-radius: 5px;
+}
+
+.windowHidden {
+    display: none;
+}
+
+.inputTitle {
+    font-size: 25px;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.goalInfo h3 {
+    margin-left: 13px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.goalInfo input {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 85px;
+    padding: 10px;
+    background-color: #dacfcf96;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: end;
+    border-top: #4b433554 solid 2px;
+}
+
+.btnContainer button {
+    margin: 10px;
+    padding: 10px 15px;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    font-size: 18px;
+    background-color: #f3780c9d;
+    cursor: pointer;
+}
+
+.btnContainer button:first-of-type {
+    background-color: transparent;
+    border: none;
+    color: #555;
+}
+
+.btnContainer button:first-of-type:hover {
+    background-color: #ddd;
+}
+
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+#cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 
 
-    button {
-        margin: 10px;
-        padding: 15px 15px;
-        border: 2px solid var(--accent-color);
-        border-radius: 5px;
-        font-size: 20px;
-        background-color: #f3780c9d;
-    }
+.objetiveCard {
+    background-color: var(--background-color-app);
+    width: 370px;
+    min-height: 60px;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    font-size: 20px;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+.objetiveCard span:first-child {
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.objetiveCard span:last-child {
+    white-space: nowrap;
+}
+
+.deleteBtn {
+    background-color: #e74d3ce5;
+    border: none;
+    color: white;
+    padding: 8px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+
+    flex-shrink: 0; 
+}
+
+.optionsWrapper {
+    position: relative;
+}
+
+.optionsMenu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.optionsMenu button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.optionsMenu button:hover {
+    background-color: #eee;
 }
