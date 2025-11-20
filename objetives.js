@@ -31,8 +31,23 @@ document.addEventListener("stepUpdated", (event) => {
 });
 
 document.addEventListener("stepUpdated", () => {
+    updateStepCounters();
     checkObjectives();
 });
+
+function updateStepCounters() {
+    const cards = document.querySelectorAll(".objetiveCard");
+
+    cards.forEach(card => {
+        const goal = Number(card.dataset.stepsGoal);
+        const start = Number(card.dataset.stepsStart);
+        const stepsSpan = card.stepsSpan;
+
+        const progress = stepsCounter - start;
+
+        stepsSpan.textContent = `${stepsCounter}/${goal}`;
+    });
+}
 
 function checkObjectives() {
     const cards = document.querySelectorAll(".objetiveCard");
@@ -45,7 +60,7 @@ function checkObjectives() {
         const progress = stepsCounter - start;
 
         if (progress >= goal) {
-            titleSpan.textContent = "DONE ✔";
+            titleSpan.textContent = "DONE";
             card.style.backgroundColor = "#8fd989";
         }
     });
@@ -87,6 +102,7 @@ function createObjetive() {
   newObjetive.dataset.stepsGoal = steps;
   newObjetive.dataset.stepsStart = stepsCounter;
   newObjetive.titleSpan = titleSpan;
+  newObjetive.stepsSpan = stepsSpan;
 
   cardsContainer.appendChild(newObjetive);
 
