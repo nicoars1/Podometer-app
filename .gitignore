@@ -1,0 +1,10 @@
+*.pem
+*.key
+*.pfx
+*.crt
+
+.vscode/
+
+https/
+
+node_modules/

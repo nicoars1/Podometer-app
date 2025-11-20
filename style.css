@@ -4,330 +4,417 @@
     --nav-color: #76997c;
     --background-color-app: #A3B18A;
     --accent-color: #BC6C25;
-    --link-color: #cccc;
-    --shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    --accent-hover: #a65d1e;
+    --link-color: #ffffff;
+    --white-alpha: rgba(255, 255, 255, 0.9);
+    --shadow-soft: 0 10px 25px rgba(75, 67, 53, 0.1);
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --radius-lg: 20px;
+    --radius-md: 12px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    height: 100dvh;
+    min-height: 100vh;
+    position: relative;
 }
 
+/* --- Navigation --- */
 nav {
     background-color: var(--nav-color);
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    color: white;
 }
 
-nav a {
+nav .left {
+    font-size: 1.1rem;
+}
+
+nav .right a {
     text-decoration: none;
     color: var(--link-color);
+    font-size: 1.5rem;
+    transition: opacity 0.3s;
+}
+
+nav .right a:hover {
+    opacity: 0.8;
 }
 
 h1 {
-    padding-top: 20px;
+    padding-top: 30px;
     text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--text-color);
 }
 
+/* --- Main Steps Circle --- */
 .appSection {
-    font-size: 30px;
     display: flex;
     justify-content: center;
-    padding-bottom: 50px;
+    padding: 30px 0 40px 0;
 }
 
 .appContainer {
-    background-color: var(--background-color-app);
-    padding: 30px;
-    margin: 30px;
+    background: linear-gradient(145deg, var(--background-color-app), #8fa375);
+    padding: 40px;
     text-align: center;
-    border-radius: 5px;
-    box-shadow: var(--shadow);
-    width: 50vh;
+    border-radius: 50%; /* Modern Circular Design */
+    box-shadow: var(--shadow-soft);
+    width: 280px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 5px solid rgba(255,255,255,0.2);
 }
 
+.appContainer h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.appContainer #stepsCount {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* --- Objectives Section --- */
 .objetiveContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px 50px 20px;
+    position: relative;
 }
 
 .objetiveHeader {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 180px;
-    padding-bottom: 10px;
-    border-bottom: #4B4335 solid 2px;
-    font-size: 30px;
-}
-
-.moreOptions {
-    margin: 0;
-    padding: 2px 8px;
-    border: 1px solid #f3780c9d;
-    border-radius: 5px;
-    font-size: 20px;
-    background-color: #f3780c9d;
-    cursor: pointer;
-}
-
-.moreOptions:hover {
-    background-color: #e68632;
-}
-
-.addObjetive {
-    width: 370px;
-    height: 60px;
-    background-color: #f3780c9d;
-    border-radius: 12px;
-    border: none;
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
-    transition: .2s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.addObjetive:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.goalWindow {
-    background-color: var(--background-color-app);
-    width: 400px;
-    height: 220px;
-    border-radius: 5px;
-}
-
-.windowHidden {
-    display: none;
-}
-
-.inputTitle {
-    font-size: 25px;
-    width: 100%;
-    padding: 20px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
-.goalInfo h3 {
-    margin-left: 13px;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.goalInfo input {
-    margin-left: 10px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    width: 85px;
-    padding: 10px;
-    background-color: #dacfcf96;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-}
-
-.btnContainer {
-    display: flex;
-    justify-content: end;
-    border-top: #4b433554 solid 2px;
-}
-
-.btnContainer button {
-    margin: 10px;
-    padding: 10px 15px;
-    border: 2px solid var(--accent-color);
-    border-radius: 10px;
-    font-size: 18px;
-    background-color: #f3780c9d;
-    cursor: pointer;
-}
-
-.btnContainer button:first-of-type {
-    background-color: transparent;
-    border: none;
-    color: #555;
-}
-
-.btnContainer button:first-of-type:hover {
-    background-color: #ddd;
-}
-
-.no-arrows::-webkit-inner-spin-button,
-.no-arrows::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-}
-
-#cardsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-
-.objetiveCard {
-    background-color: var(--background-color-app);
-    width: 370px;
-    min-height: 60px;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: var(--shadow);
-    font-size: 20px;
-    font-weight: 700;
-
-    display: flex;
     justify-content: space-between;
     align-items: center;
-
-    overflow: hidden;
-}
-
-
-.objetiveCard span:first-child {
-    max-width: 70%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.objetiveCard span:last-child {
-    white-space: nowrap;
-}
-
-.deleteBtn {
-    background-color: #e74d3ce5;
-    border: none;
-    color: white;
-    padding: 8px 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-
-    flex-shrink: 0; 
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .optionsWrapper {
     position: relative;
 }
 
+.moreOptions {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moreOptions:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* --- Dropdown Menu --- */
 .optionsMenu {
     position: absolute;
-    top: 40px;
+    top: 100%;
     right: 0;
     background-color: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 10;
+    padding: 5px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    z-index: 100;
+    min-width: 180px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .optionsMenu button {
     background: none;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
     width: 100%;
     text-align: left;
-    font-size: 16px;
+    font-size: 0.9rem;
     cursor: pointer;
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
 }
 
 .optionsMenu button:hover {
-    background-color: #eee;
+    background-color: #fff5f5;
 }
 
+/* --- Cards --- */
+#cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.objetiveCard {
+    background-color: white;
+    width: 100%;
+    min-height: 70px;
+    border-radius: var(--radius-md);
+    padding: 0 20px;
+    box-shadow: var(--shadow-card);
+    font-size: 1rem;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 5px solid var(--background-color-app);
+}
+
+.objetiveCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.objetiveCard span:first-child {
+    font-weight: 600;
+    max-width: 65%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.objetiveCard span:last-child {
+    font-weight: 400;
+    color: #888;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.deleteBtn {
+    background-color: #ffebee;
+    border: none;
+    color: #e74c3c;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 15px;
+    flex-shrink: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* --- Main Action Button --- */
+.addBtnContainer {
+    width: 100%;
+}
+
+.addObjetive {
+    width: 100%;
+    height: 60px;
+    background-color: var(--accent-color);
+    border-radius: var(--radius-lg);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(188, 108, 37, 0.4);
+}
+
+.addObjetive:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(188, 108, 37, 0.5);
+}
+
+/* --- Modal Window --- */
+.goalWindow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(75, 67, 53, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goalWindowContent {
+    background-color: var(--background-color);
+    width: 90%;
+    max-width: 400px;
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.inputTitle {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    outline: none;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.inputTitle:focus {
+    border-color: var(--accent-color);
+}
+
+.goalInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.goalInfo h3 {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin: 0;
+}
+
+.goalInfo input {
+    font-size: 1.1rem;
+    width: 100px;
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Hide number arrows */
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 20px;
+}
+
+.btnContainer button {
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btnContainer button:first-of-type {
+    background-color: transparent;
+    color: #777;
+}
+
+.btnContainer button:first-of-type:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: #333;
+}
+
+.btnContainer button:last-of-type {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(188, 108, 37, 0.3);
+}
+
+.btnContainer button:last-of-type:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.windowHidden {
+    display: none !important;
+}
+
+/* --- Media Queries --- */
 @media (max-width: 480px) {
-
-    nav {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-
     .appContainer {
-        width: 100%;
-        margin: 20px 20px;
-        padding: 20px;
+        width: 240px;
+        height: 240px;
     }
-
-    .addObjetive {
-        width: 100%;
-        height: 55px;
-        font-size: 16px;
-    }
-
-    .objetiveCard {
-        width: 100%;
-        padding: 15px;
-        font-size: 18px;
+    
+    .appContainer #stepsCount {
+        font-size: 3.5rem;
     }
 
     .objetiveHeader {
-        gap: 20px;
-        font-size: 24px;
-    }
-
-    .goalWindow {
-        width: 100%;
-        height: auto;
-        padding-bottom: 20px;
-    }
-
-    #cardsContainer {
-        width: 80%;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .appContainer {
-        width: 100dvh;
-        padding: 25px;
-    }
-
-    .addObjetive {
-        width: 100%;
-        height: 60px;
-    }
-
-    .objetiveCard {
-        width: 100%;
-        padding: 15px;
-        font-size: 18px;
-    }
-
-    .objetiveHeader {
-        gap: 80px;
-    }
-
-    .goalWindow {
-        width: 90%;
-    }
-}
-
-@media (max-width: 1024px) {
-
-    .appContainer {
-        width: 100dvh;
-    }
-
-    .objetiveCard {
-        width: 100%;
+        font-size: 1.2rem;
     }
 }

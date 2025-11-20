@@ -18,6 +18,8 @@ cancelBtn.addEventListener('click', () => {
 
 saveBtn.addEventListener('click', () => {
   createObjetive();
+  goalWindow.classList.add("windowHidden");
+  addObjetiveBtn.classList.remove("windowHidden");
 });
 
 inputSteps.addEventListener("keydown", (e) => {

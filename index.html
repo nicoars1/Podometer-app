@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
@@ -15,7 +16,7 @@
 <body id="body">
     <nav>
         <div class="left">
-            Nico's podometer app
+            <strong>Nico's</strong> podometer app
         </div>
 
         <div class="right">
@@ -39,34 +40,40 @@
             <div class="objetiveHeader">
                 <h2>Objetives</h2>
                 <div class="optionsWrapper">
-                    <button class="moreOptions" id="moreOptions">:</button>
+                    <button class="moreOptions" id="moreOptions"><i class="fa-solid fa-ellipsis-vertical"></i></button>
 
                     <div class="optionsMenu windowHidden" id="optionsMenu">
-                        <button id="clearObjectives">Delete all objectives</button>
+                        <button id="clearObjectives"><i class="fa-solid fa-trash"></i> Delete all objectives</button>
                     </div>
                 </div>
             </div>
 
             <div id="cardsContainer" class="windowHidden"></div>
 
-            <div>
-                <button class="addObjetive" id="addObjetive">Add Objetives</button>
+            <div class="addBtnContainer">
+                <button class="addObjetive" id="addObjetive">
+                    <i class="fa-solid fa-plus"></i> Add Objetives
+                </button>
             </div>
 
             <div class="goalWindow windowHidden" id="goalWindow">
-                <input type="text" placeholder="What are you working on?" class="inputTitle" id="inputTitle">
-                <div class="goalInfo">
-                    <h3>Steps Goal</h3>
-                    <input type="number" class="no-arrows" min="0" id="inputSteps">
-                </div>
-                <div class="btnContainer">
-                    <button id="cancelBtn">Cancel</button>
-                    <button id="saveBtn">Save</button>
+                <div class="goalWindowContent">
+                    <input type="text" placeholder="What are you working on?" class="inputTitle" id="inputTitle">
+                    <div class="goalInfo">
+                        <h3>Steps Goal</h3>
+                        <input type="number" class="no-arrows" min="0" id="inputSteps" placeholder="0">
+                    </div>
+                    <div class="btnContainer">
+                        <button id="cancelBtn">Cancel</button>
+                        <button id="saveBtn">Save</button>
+                    </div>
                 </div>
             </div>
 
         </div>
+        <!--
         <p id="sensorStatus"></p>
+        -->
     </main>
     
     <script src="script.js" type="module"></script>
