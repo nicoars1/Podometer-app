@@ -1,5 +1,4 @@
 const stepCountElement = document.getElementById('stepsCount');
-const sensorStatusElement = document.getElementById('sensorStatus');
 
 // CONFIGURACIÓN
 const SENSOR_FREQUENCY = 30;
@@ -24,7 +23,7 @@ let magnitudeHistory = [];
 let peakHistory = []; // historial de picos detectados
 
 if ("LinearAccelerationSensor" in window) {
-    sensorStatusElement.innerText = "Sensor activated successfully";
+    
 
     try {
         const sensor = new LinearAccelerationSensor({ frequency: SENSOR_FREQUENCY });
